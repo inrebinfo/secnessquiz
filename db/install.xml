@@ -1,0 +1,134 @@
+<XMLDB xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" PATH="mod/secnessquiz/db" VERSION="20170827" COMMENT="XMLDB file for Moodle mod/secnessquiz" xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd">
+<TABLES>
+<TABLE NAME="secnessquiz" COMMENT="Default comment for secnessquiz, please edit me">
+<FIELDS>
+<FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+<FIELD NAME="course" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" COMMENT="Course secnessquiz activity belongs to"/>
+<FIELD NAME="name" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false" COMMENT="name field for moodle instances"/>
+<FIELD NAME="intro" TYPE="text" NOTNULL="true" SEQUENCE="false" COMMENT="General introduction of the secnessquiz activity"/>
+<FIELD NAME="introformat" TYPE="int" LENGTH="4" NOTNULL="true" DEFAULT="0" SEQUENCE="false" COMMENT="Format of the intro field (MOODLE, HTML, MARKDOWN...)"/>
+<FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+<FIELD NAME="timemodified" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
+<FIELD NAME="grade" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="100" SEQUENCE="false" COMMENT="The maximum grade. Can be negative to indicate the use of a scale."/>
+<FIELD NAME="scenario_uniqueid" TYPE="char" LENGTH="200" NOTNULL="true" SEQUENCE="false"/>
+</FIELDS>
+<KEYS>
+<KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+</KEYS>
+<INDEXES>
+<INDEX NAME="course" UNIQUE="false" FIELDS="course"/>
+</INDEXES>
+</TABLE>
+<TABLE NAME="secness_actions" COMMENT="actions table for secnessquiz">
+<FIELDS>
+<FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+<FIELD NAME="name" TYPE="char" LENGTH="200" NOTNULL="true" SEQUENCE="false"/>
+<FIELD NAME="alerttext" TYPE="char" LENGTH="200" NOTNULL="true" SEQUENCE="false"/>
+<FIELD NAME="points" TYPE="int" LENGTH="20" NOTNULL="true" SEQUENCE="false"/>
+<FIELD NAME="function" TYPE="text" NOTNULL="false" SEQUENCE="false"/>
+<FIELD NAME="redirect" TYPE="char" LENGTH="200" NOTNULL="false" SEQUENCE="false"/>
+<FIELD NAME="act_uniqueid" TYPE="char" LENGTH="200" NOTNULL="true" SEQUENCE="false"/>
+</FIELDS>
+<KEYS>
+<KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+</KEYS>
+</TABLE>
+<TABLE NAME="secness_clickableobject" COMMENT="Default comment for the table, please edit me">
+<FIELDS>
+<FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+<FIELD NAME="scene_uniqueid" TYPE="char" LENGTH="200" NOTNULL="true" SEQUENCE="false"/>
+<FIELD NAME="type" TYPE="char" LENGTH="45" NOTNULL="true" SEQUENCE="false"/>
+<FIELD NAME="x" TYPE="int" LENGTH="20" NOTNULL="true" SEQUENCE="false"/>
+<FIELD NAME="y" TYPE="int" LENGTH="20" NOTNULL="true" SEQUENCE="false"/>
+<FIELD NAME="width" TYPE="int" LENGTH="20" NOTNULL="true" SEQUENCE="false"/>
+<FIELD NAME="height" TYPE="int" LENGTH="20" NOTNULL="true" SEQUENCE="false"/>
+<FIELD NAME="radius" TYPE="int" LENGTH="20" NOTNULL="true" SEQUENCE="false"/>
+<FIELD NAME="opacity" TYPE="char" LENGTH="45" NOTNULL="true" SEQUENCE="false"/>
+<FIELD NAME="fillcolor" TYPE="char" LENGTH="45" NOTNULL="true" SEQUENCE="false"/>
+<FIELD NAME="strokecolor" TYPE="char" LENGTH="45" NOTNULL="true" SEQUENCE="false"/>
+<FIELD NAME="linewidth" TYPE="int" LENGTH="20" NOTNULL="true" SEQUENCE="false"/>
+<FIELD NAME="click_uniqueid" TYPE="char" LENGTH="200" NOTNULL="true" SEQUENCE="false"/>
+</FIELDS>
+<KEYS>
+<KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+</KEYS>
+</TABLE>
+<TABLE NAME="secness_results" COMMENT="Default comment for the table, please edit me">
+<FIELDS>
+<FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+<FIELD NAME="userid" TYPE="int" LENGTH="20" NOTNULL="true" SEQUENCE="false"/>
+<FIELD NAME="scenario_uniqueid" TYPE="char" LENGTH="200" NOTNULL="true" SEQUENCE="false"/>
+<FIELD NAME="scene_uniqueid" TYPE="char" LENGTH="200" NOTNULL="true" SEQUENCE="false"/>
+<FIELD NAME="color" TYPE="char" LENGTH="20" NOTNULL="true" SEQUENCE="false"/>
+<FIELD NAME="time" TYPE="int" LENGTH="20" NOTNULL="true" SEQUENCE="false"/>
+<FIELD NAME="result_uniqueid" TYPE="char" LENGTH="200" NOTNULL="true" SEQUENCE="false"/>
+</FIELDS>
+<KEYS>
+<KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+</KEYS>
+</TABLE>
+<TABLE NAME="secness_sceneimages" COMMENT="Default comment for the table, please edit me">
+<FIELDS>
+<FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+<FIELD NAME="name" TYPE="char" LENGTH="200" NOTNULL="true" SEQUENCE="false"/>
+<FIELD NAME="filename" TYPE="char" LENGTH="200" NOTNULL="true" SEQUENCE="false"/>
+<FIELD NAME="imgs_uniqueid" TYPE="char" LENGTH="200" NOTNULL="true" SEQUENCE="false"/>
+</FIELDS>
+<KEYS>
+<KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+</KEYS>
+</TABLE>
+<TABLE NAME="secness_scenes" COMMENT="Default comment for the table, please edit me">
+<FIELDS>
+<FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+<FIELD NAME="scenario_uniqueid" TYPE="char" LENGTH="200" NOTNULL="false" SEQUENCE="false"/>
+<FIELD NAME="title" TYPE="char" LENGTH="200" NOTNULL="true" SEQUENCE="false"/>
+<FIELD NAME="description" TYPE="text" NOTNULL="true" SEQUENCE="false"/>
+<FIELD NAME="imgs_uniqueid" TYPE="char" LENGTH="200" NOTNULL="true" SEQUENCE="false"/>
+<FIELD NAME="isend" TYPE="int" LENGTH="1" NOTNULL="true" SEQUENCE="false"/>
+<FIELD NAME="color" TYPE="char" LENGTH="30" NOTNULL="false" SEQUENCE="false"/>
+<FIELD NAME="scenes_uniqueid" TYPE="char" LENGTH="200" NOTNULL="true" SEQUENCE="false"/>
+</FIELDS>
+<KEYS>
+<KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+</KEYS>
+</TABLE>
+<TABLE NAME="secness_scenarios" COMMENT="Default comment for the table, please edit me">
+<FIELDS>
+<FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+<FIELD NAME="title" TYPE="char" LENGTH="200" NOTNULL="true" SEQUENCE="false"/>
+<FIELD NAME="description" TYPE="text" NOTNULL="true" SEQUENCE="false"/>
+<FIELD NAME="startscene" TYPE="char" LENGTH="200" NOTNULL="false" SEQUENCE="false"/>
+<FIELD NAME="courseid" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+<FIELD NAME="scenario_uniqueid" TYPE="char" LENGTH="200" NOTNULL="true" SEQUENCE="false"/>
+</FIELDS>
+<KEYS>
+<KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+</KEYS>
+</TABLE>
+<TABLE NAME="secness_textboxes" COMMENT="Default comment for the table, please edit me">
+<FIELDS>
+<FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+<FIELD NAME="clickable_uniqueid" TYPE="char" LENGTH="200" NOTNULL="false" SEQUENCE="false"/>
+<FIELD NAME="title" TYPE="char" LENGTH="200" NOTNULL="true" SEQUENCE="false"/>
+<FIELD NAME="text" TYPE="text" NOTNULL="true" SEQUENCE="false"/>
+<FIELD NAME="optional" TYPE="text" NOTNULL="false" SEQUENCE="false"/>
+<FIELD NAME="tb_uniqueid" TYPE="char" LENGTH="200" NOTNULL="true" SEQUENCE="false"/>
+</FIELDS>
+<KEYS>
+<KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+</KEYS>
+</TABLE>
+<TABLE NAME="secness_textbox_actions" COMMENT="Default comment for the table, please edit me">
+<FIELDS>
+<FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+<FIELD NAME="tb_uniqueid" TYPE="char" LENGTH="200" NOTNULL="true" SEQUENCE="false"/>
+<FIELD NAME="act_uniqueid" TYPE="char" LENGTH="200" NOTNULL="true" SEQUENCE="false"/>
+<FIELD NAME="tba_uniqueid" TYPE="char" LENGTH="200" NOTNULL="true" SEQUENCE="false"/>
+</FIELDS>
+<KEYS>
+<KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+</KEYS>
+</TABLE>
+</TABLES>
+</XMLDB>
